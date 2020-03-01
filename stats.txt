@@ -1,5 +1,5 @@
-C-Style took (average over 100 runs, 1 threads) : 0:00:00.329928
+C-Style took (average over 100 runs, 1 threads) : 0:00:00.302017
 GO-Style took (average over 100 runs, 1 goroutines) : 0:00:00.066548
 
-C-Style took (average over 100 runs, 10 threads) : 0:00:00.196332
+C-Style took (average over 100 runs, 10 threads) : 0:00:00.147392
 GO-Style took (average over 100 runs, 10 goroutines) : 0:00:00.047096

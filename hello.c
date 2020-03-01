@@ -13,8 +13,10 @@ typedef struct args_s {
 } args_t;
 
 void* set_value(void* args) {
-    for (int i = 0; i < ((args_t*)args)->length; ++i) {
-        (((args_t*)args)->array)[i] = (((args_t*)args)->array)[i] * (((args_t*)args)->array)[i]; 
+    int length = ((args_t*)args)->length;
+    int* array = ((args_t*)args)->array;
+    for (int i = 0; i < length; ++i) {
+        array[i] = array[i] * array[i]; 
     }
     return NULL;
 }
