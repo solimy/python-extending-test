@@ -31,11 +31,10 @@ func min(a int, b int) int {
 }
 
 //export test2
-func test2(array *C.int, length int) {
-    routines := 10
+func test2(array *C.int, length int, routines int) {
+    // fmt.Printf("array address (from go) : %p\n", array)
     chunk_size := length / routines
     runtime.GOMAXPROCS(routines)
-    // fmt.Printf("array address (from go) : %p\n", array)
     slice := (*[1 << 30]C.int)(unsafe.Pointer(array))[:length:length]
     var wg sync.WaitGroup
     for start := 0; start < length; start += chunk_size {
