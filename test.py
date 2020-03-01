@@ -14,11 +14,11 @@ def time(f):
 
 
 if __name__ == "__main__":
-    values = [*range(1000000)]
+    values = 100000000
     runs = 100
 
     print('C-Style :')
-    array_c = (C.c_int32 * len(values))(*values)
+    array_c = (C.c_int32 * values)(*range(values))
     print(f'array_c address (from python) : {hex(C.addressof(array_c))}')
     print(f'clib build output : "{subprocess.check_output("gcc -shared -o hello.c.so hello.c".split(" ")).decode("utf-8")}"')
     clib = C.cdll.LoadLibrary("hello.c.so")
@@ -31,7 +31,7 @@ if __name__ == "__main__":
     print(array_c[-5:])
 
     print('GO-Style :')
-    array_go = (C.c_int32 * len(values))(*values)
+    array_go = (C.c_int32 * values)(*range(values))
     print(f'array_go address (from python) : {hex(C.addressof(array_go))}')
     print(f'golib build output : "{subprocess.check_output("go build -o hello.go.so -buildmode=c-shared hello.go".split(" ")).decode("utf-8")}"')
     golib = C.cdll.LoadLibrary("hello.go.so")
