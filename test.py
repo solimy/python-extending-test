@@ -20,7 +20,7 @@ if __name__ == "__main__":
     print('C-Style :')
     array_c = (C.c_int32 * values)(*range(values))
     print(f'array_c address (from python) : {hex(C.addressof(array_c))}')
-    print(f'clib build output : "{subprocess.check_output("gcc -shared -o hello.c.so hello.c".split(" ")).decode("utf-8")}"')
+    print(f'gcc output : "{subprocess.check_output("gcc -shared -o hello.c.so hello.c".split(" ")).decode("utf-8")}"')
     clib = C.cdll.LoadLibrary("hello.c.so")
     ctimes = []
     for run in range(runs):
@@ -33,7 +33,7 @@ if __name__ == "__main__":
     print('GO-Style :')
     array_go = (C.c_int32 * values)(*range(values))
     print(f'array_go address (from python) : {hex(C.addressof(array_go))}')
-    print(f'golib build output : "{subprocess.check_output("go build -o hello.go.so -buildmode=c-shared hello.go".split(" ")).decode("utf-8")}"')
+    print(f'go build output : "{subprocess.check_output("go build -o hello.go.so -buildmode=c-shared hello.go".split(" ")).decode("utf-8")}"')
     golib = C.cdll.LoadLibrary("hello.go.so")
     gotimes = []
     for run in range(runs):
